@@ -11,7 +11,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     void fullFillFormTest() {
         registrationPage
                 .openPage()
-                .setFurstName("Alex")
+                .setFirstName("Alex")
                 .setLastName("Terrible")
                 .setEmail("test@test.com")
                 .setGender("Other")
@@ -42,7 +42,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     void minimalFillFormTest(){
         registrationPage
                 .openPage()
-                .setFurstName("Alex")
+                .setFirstName("Alex")
                 .setLastName("Terrible")
                 .setGender("Other")
                 .setUserNumber("0123456789")

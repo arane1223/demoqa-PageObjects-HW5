@@ -38,7 +38,7 @@ public class RegistrationForm {
         return this;
     }
 
-    public RegistrationForm setFurstName(String value){
+    public RegistrationForm setFirstName(String value){
         firstNameInput.setValue(value);
         return this;
     }
