@@ -3,9 +3,6 @@ package tests;
 import components.RegistrationForm;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
-
 public class RegistrationWithPageObjectsTest extends TestBase {
 
     RegistrationForm registrationPage = new RegistrationForm();
