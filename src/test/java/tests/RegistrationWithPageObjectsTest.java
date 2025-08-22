@@ -56,7 +56,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     }
 
     @Test
-    void nigativeFillFormTest(){
+    void negativeFillFormTest(){
         registrationPage
                 .openPage()
                 .clickOnSubmit();
