@@ -62,7 +62,7 @@ public class RegistrationForm {
     public RegistrationForm setDayOfBirthday(String day, String month, String year){
         celendarInput.click();
         RegistrationFormCalendar celendarComponent = new RegistrationFormCalendar();
-        celendarComponent.setDate("15","May","1995");
+        celendarComponent.setDate(day, month, year);
         return this;
     }
 
