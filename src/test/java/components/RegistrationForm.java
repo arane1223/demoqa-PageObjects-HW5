@@ -3,7 +3,6 @@ package components;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -21,18 +20,15 @@ public class RegistrationForm {
             adressInput = $("#currentAddress"),
             stateInput = $("#react-select-3-input"),
             cityInput = $("#react-select-4-input"),
-            submitInput = $("#submit"),
-            resultTitle = $("#example-modal-sizes-title-lg");
-
-    private void celendarComponent (String day, String month, String year){
-        $(".react-datepicker__month-select").$(byText(month)).click();
-        $(".react-datepicker__year-select").$(byText(year)).click();
-        $(".react-datepicker__month").$(byText(day)).click();
-    }
+            submitInput = $("#submit");
 
     public RegistrationForm openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        return this;
+    }
+
+    public RegistrationForm deleteAdds(){
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
@@ -65,7 +61,8 @@ public class RegistrationForm {
 
     public RegistrationForm setDayOfBirthday(String day, String month, String year){
         celendarInput.click();
-        celendarComponent("15","May","1995");
+        RegistrationFormCalendar celendarComponent = new RegistrationFormCalendar();
+        celendarComponent.setDate("15","May","1995");
         return this;
     }
 
@@ -101,21 +98,4 @@ public class RegistrationForm {
         submitInput.click();
         return this;
     }
-
-    public RegistrationForm chekFormVisible(String title){
-        resultTitle.shouldBe(visible).shouldHave(text(title));
-        return this;
-    }
-
-    public RegistrationForm chekFormResults (String key, String resultValue){
-        $(".table-responsive").$(byText(key)).parent()
-                .shouldHave(text(resultValue));
-        return this;
-    }
-
-    public RegistrationForm chekFormUnvisible (){
-        resultTitle.shouldNotBe(visible);
-        return this;
-    }
-
 }

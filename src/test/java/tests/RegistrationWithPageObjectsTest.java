@@ -1,16 +1,19 @@
 package tests;
 
 import components.RegistrationForm;
+import components.RegistrationFormResults;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationWithPageObjectsTest extends TestBase {
 
     RegistrationForm registrationPage = new RegistrationForm();
+    RegistrationFormResults registrationResults = new RegistrationFormResults();
 
     @Test
     void fullFillFormTest() {
         registrationPage
                 .openPage()
+                .deleteAdds()
                 .setFirstName("Alex")
                 .setLastName("Terrible")
                 .setEmail("test@test.com")
@@ -24,7 +27,7 @@ public class RegistrationWithPageObjectsTest extends TestBase {
                 .setStateAndCity("NCR","Delhi")
                 .clickOnSubmit();
 
-        registrationPage //проверки
+        registrationResults //проверки
                 .chekFormVisible("Thanks for submitting the form")
                 .chekFormResults("Student Name","Alex Terrible")
                 .chekFormResults("Student Email","test@test.com")
@@ -42,13 +45,14 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     void minimalFillFormTest(){
         registrationPage
                 .openPage()
+                .deleteAdds()
                 .setFirstName("Alex")
                 .setLastName("Terrible")
                 .setGender("Other")
                 .setUserNumber("0123456789")
                 .clickOnSubmit();
 
-        registrationPage //проверки
+        registrationResults //проверки
                 .chekFormVisible("Thanks for submitting the form")
                 .chekFormResults("Student Name","Alex Terrible")
                 .chekFormResults("Gender","Other")
@@ -59,9 +63,10 @@ public class RegistrationWithPageObjectsTest extends TestBase {
     void negativeFillFormTest(){
         registrationPage
                 .openPage()
+                .deleteAdds()
                 .clickOnSubmit();
 
-        registrationPage
+        registrationResults
                 .chekFormUnvisible();
     }
 }
