@@ -16,6 +16,10 @@ public class TextBox {
 
     public TextBox openPage() {
         open("/text-box");
+        return this;
+    }
+
+    public TextBox deleteAdds(){
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
@@ -31,7 +35,7 @@ public class TextBox {
         return this;
     }
 
-    public TextBox setAllAdresses (String current, String permanent){
+    public TextBox setAllAddresses (String current, String permanent){
         currentAddressInput.setValue(current);
         permanentAddressInput.setValue(permanent);
         return this;
@@ -39,14 +43,6 @@ public class TextBox {
 
     public TextBox clickOnSubmit(){
         submitInput.click();
-        return this;
-    }
-
-    public TextBox chekResults (String name, String email, String currentAddress, String permanentAddress){
-        $("#output #name").shouldHave(text(name));
-        $("#output #email").shouldHave(text(email));
-        $("#output #currentAddress").shouldHave(text(currentAddress));
-        $("#output #permanentAddress").shouldHave(text(permanentAddress));
         return this;
     }
 }
