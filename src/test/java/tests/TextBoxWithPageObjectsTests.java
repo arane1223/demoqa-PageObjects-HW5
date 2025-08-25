@@ -1,13 +1,13 @@
 package tests;
 
-import components.TextBox;
-import components.TextBoxResults;
+import pages.TextBox;
+import pages.components.BoxResultsComponent;
 import org.junit.jupiter.api.Test;
 
 public class TextBoxWithPageObjectsTests extends TestBase {
 
     TextBox textBox = new TextBox();
-    TextBoxResults textBoxResults = new TextBoxResults();
+    BoxResultsComponent textBoxResults = new BoxResultsComponent();
 
     @Test
     void fillFormTest() {

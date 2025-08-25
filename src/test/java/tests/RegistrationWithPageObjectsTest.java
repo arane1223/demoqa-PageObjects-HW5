@@ -1,13 +1,13 @@
 package tests;
 
-import components.RegistrationForm;
-import components.RegistrationFormResults;
+import pages.RegistrationForm;
+import pages.components.RegistrationResultsComponent;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationWithPageObjectsTest extends TestBase {
 
     RegistrationForm registrationPage = new RegistrationForm();
-    RegistrationFormResults registrationResults = new RegistrationFormResults();
+    RegistrationResultsComponent registrationResults = new RegistrationResultsComponent();
 
     @Test
     void fullFillFormTest() {
