@@ -21,24 +21,24 @@ public class RegistrationWithPageObjectsTest extends TestBase {
                 .setUserNumber("0123456789")
                 .setDayOfBirthday("15","May","1995")
                 .setSubjects("Math")
-                .setHobbies("Sports","Music")
+                .setHobbies("Sports", "Reading", "Music")
                 .setPicture("Sega.jpg")
                 .setAdress("Ekaterinberg")
                 .setStateAndCity("NCR","Delhi")
                 .clickOnSubmit();
 
         registrationResults //проверки
-                .chekFormVisible("Thanks for submitting the form")
-                .chekFormResults("Student Name","Alex Terrible")
-                .chekFormResults("Student Email","test@test.com")
-                .chekFormResults("Gender","Other")
-                .chekFormResults("Mobile","0123456789")
-                .chekFormResults("Date of Birth","15 May,1995")
-                .chekFormResults("Subjects","Maths")
-                .chekFormResults("Hobbies","Sports, Music")
-                .chekFormResults("Picture","Sega.jpg")
-                .chekFormResults("Address","Ekaterinberg")
-                .chekFormResults("State and City","NCR Delhi");
+                .checkFormVisible("Thanks for submitting the form")
+                .checkFormResults("Student Name","Alex Terrible")
+                .checkFormResults("Student Email","test@test.com")
+                .checkFormResults("Gender","Other")
+                .checkFormResults("Mobile","0123456789")
+                .checkFormResults("Date of Birth","15 May,1995")
+                .checkFormResults("Subjects","Maths")
+                .checkFormResults("Hobbies","Sports, Reading, Music")
+                .checkFormResults("Picture","Sega.jpg")
+                .checkFormResults("Address","Ekaterinberg")
+                .checkFormResults("State and City","NCR Delhi");
     }
 
     @Test
@@ -53,10 +53,10 @@ public class RegistrationWithPageObjectsTest extends TestBase {
                 .clickOnSubmit();
 
         registrationResults //проверки
-                .chekFormVisible("Thanks for submitting the form")
-                .chekFormResults("Student Name","Alex Terrible")
-                .chekFormResults("Gender","Other")
-                .chekFormResults("Mobile","0123456789");
+                .checkFormVisible("Thanks for submitting the form")
+                .checkFormResults("Student Name","Alex Terrible")
+                .checkFormResults("Gender","Other")
+                .checkFormResults("Mobile","0123456789");
     }
 
     @Test
@@ -67,6 +67,6 @@ public class RegistrationWithPageObjectsTest extends TestBase {
                 .clickOnSubmit();
 
         registrationResults
-                .chekFormUnvisible();
+                .checkFormUnvisible();
     }
 }

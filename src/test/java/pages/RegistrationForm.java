@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationForm {
     private SelenideElement
+            userForm = $("#userForm"),
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
@@ -72,9 +73,39 @@ public class RegistrationForm {
         return this;
     }
 
-    public RegistrationForm setHobbies(String value1, String value2){
-        hobbiesWrapper.$(byText(value1)).click();
-        hobbiesWrapper.$(byText(value2)).click();
+    // сеттеры для поля Subjects в уроке 7
+    public RegistrationForm setRandomSubjects(String value) {
+        if (value == null || value.isBlank()) return this;
+
+        for (String raw : value.split(",")) {
+            String label = raw.trim();
+            if (label.isEmpty()) continue;
+
+            userForm.scrollTo();
+            subjectInput.setValue(label);
+            subjectInput.pressEnter();
+        }
+        return this;
+    }
+
+    public RegistrationForm setHobbies(String hobbiesOne, String hobbiesTwo, String hobbiesThree){
+        hobbiesWrapper.$(byText(hobbiesOne)).click();
+        hobbiesWrapper.$(byText(hobbiesTwo)).click();
+        hobbiesWrapper.$(byText(hobbiesThree)).click();
+        return this;
+    }
+
+    public RegistrationForm setRandomHobbies(String hobbies){
+        hobbiesWrapper.$(byText(hobbies)).click();
+        return this;
+    }
+
+    // сеттеры для поля hobbies в уроке 7
+    public RegistrationForm setHobbies(String value) {
+        String[] hobbies = value.split(",");
+        for (String hobby : hobbies) {
+            hobbiesWrapper.$(byText(hobby.trim())).click();
+        }
         return this;
     }
 
@@ -89,7 +120,7 @@ public class RegistrationForm {
     }
 
     public RegistrationForm setStateAndCity (String state, String city){
-        $("#stateCity-wrapper").scrollTo();
+
         stateInput.setValue(state).pressEnter();
         cityInput.setValue(city).pressEnter();
         return this;
